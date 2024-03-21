@@ -1,0 +1,38 @@
+<head>
+    <style>
+        /* Establecer un posicionamiento absoluto para los botones */
+        button {
+            position: absolute;
+            transition: 0.5s ease; /* Opcional: añade una transición suave */
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Les gustó la clase?</h1>
+    <button onclick="mostrarAlerta()">¡Sí!</button>
+    <button id="botonMover" style="left: 100px;">Nunca me hubiera gustado algo así</button>
+
+    <script>
+        function mostrarAlerta() {
+            alert('Yo sabía :D');
+        }
+
+        // Función para mover el botón a una posición aleatoria
+        function moverBoton() {
+            // Obtener las dimensiones de la ventana para calcular las nuevas posiciones
+            var altura = window.innerHeight - this.offsetHeight;
+            var anchura = window.innerWidth - this.offsetWidth;
+
+            // Generar posiciones aleatorias dentro de los límites de la ventana
+            var nuevaPosicionX = Math.floor(Math.random() * anchura) + 'px';
+            var nuevaPosicionY = Math.floor(Math.random() * altura) + 'px';
+
+            // Actualizar las propiedades CSS del botón para moverlo
+            this.style.left = nuevaPosicionX;
+            this.style.top = nuevaPosicionY;
+        }
+
+        // Añadir el evento mouseover al segundo botón
+        document.getElementById('botonMover').addEventListener('mouseover', moverBoton);
+    </script>
+</body>
